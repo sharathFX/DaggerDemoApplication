@@ -1,37 +1,25 @@
-package infiniteloop.dagger.demo.application;
+package infiniteloop.dagger.demo.application.views;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
-import javax.inject.Inject;
-
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import infiniteloop.dagger.demo.application.analytics.AnalyticsProvider;
+import infiniteloop.dagger.demo.application.R;
 import infiniteloop.dagger.demo.application.analytics.GoogleAnalyticsManager;
-import infiniteloop.dagger.demo.application.di.ApplicationComponent;
-import infiniteloop.dagger.demo.application.di.ApplicationModule;
-import infiniteloop.dagger.demo.application.di.DaggerApplicationComponent;
-import infiniteloop.dagger.demo.application.utils.Calculator;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    ApplicationComponent mApplicationComponent;
-
-    @Inject
-    AnalyticsProvider mAnalyticsProvider;
+    GoogleAnalyticsManager mAnalyticsProvider;
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-
-    @Inject
-    GoogleAnalyticsManager mGoogleAnalyticsManager;
 
     //*********************************************************************
     // Life cycles
@@ -44,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
 
+        mAnalyticsProvider = new GoogleAnalyticsManager();
+
         injectMyself();
     }
 
@@ -52,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
     //*********************************************************************
 
     private void injectMyself() {
-        mApplicationComponent = DaggerApplicationComponent.builder().applicationModule(new ApplicationModule()).build();
-        mApplicationComponent.inject(this);
+
     }
 
     //*********************************************************************
@@ -63,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     @OnClick(R.id.button1)
     public void logEvent1() {
         Toast.makeText(this, "Event1", Toast.LENGTH_SHORT).show();
-        mGoogleAnalyticsManager.logEvent1();
+        mAnalyticsProvider.logEvent1();
     }
 
     @OnClick(R.id.button2)
