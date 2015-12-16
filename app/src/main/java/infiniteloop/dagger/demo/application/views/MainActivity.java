@@ -1,5 +1,6 @@
 package infiniteloop.dagger.demo.application.views;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +23,10 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
 
+    @OnClick(R.id.open_second)
+    void openSecondActivity() {
+        startActivity(new Intent(this, SecondActivity.class));
+    }
 
     //*********************************************************************
     // Life cycles
