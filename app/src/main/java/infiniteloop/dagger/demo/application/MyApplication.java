@@ -15,7 +15,22 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = this;
+
+        injectMyself();
     }
+
+    //*********************************************************************
+    // Utility methods
+    //*********************************************************************
+
+    private void injectMyself() {
+
+    }
+
+    //*********************************************************************
+    // APIs
+    //*********************************************************************
+
 
     /**
      * get Application context
@@ -26,5 +41,9 @@ public class MyApplication extends Application {
         return mContext;
     }
 
+
+    //*********************************************************************
+    // End of class
+    //*********************************************************************
 
 }

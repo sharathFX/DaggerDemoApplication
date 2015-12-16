@@ -9,6 +9,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import infiniteloop.dagger.demo.application.R;
+import infiniteloop.dagger.demo.application.analytics.AnalyticsManager;
 import infiniteloop.dagger.demo.application.analytics.GoogleAnalyticsManager;
 
 
@@ -16,10 +17,11 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
-    GoogleAnalyticsManager mAnalyticsProvider;
+    AnalyticsManager mAnalyticsProvider;
 
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
+
 
     //*********************************************************************
     // Life cycles
@@ -31,9 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-
         mAnalyticsProvider = new GoogleAnalyticsManager();
-
         injectMyself();
     }
 
@@ -42,7 +42,11 @@ public class MainActivity extends AppCompatActivity {
     //*********************************************************************
 
     private void injectMyself() {
-
+        /*MainComponent component = DaggerMainComponent
+                .builder()
+                .mainModule(new MainModule())
+                .build();
+        component.inject(this);*/
     }
 
     //*********************************************************************

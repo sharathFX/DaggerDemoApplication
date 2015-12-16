@@ -5,7 +5,7 @@ import android.util.Log;
 import javax.inject.Inject;
 
 
-public class GoogleAnalyticsManager implements AnalyticsProvider {
+public class GoogleAnalyticsManager implements AnalyticsManager {
 
     public static final String TAG = "GoogleAnalyticsManager";
 

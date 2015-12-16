@@ -1,7 +1,7 @@
 package infiniteloop.dagger.demo.application.analytics;
 
 
-public interface AnalyticsProvider {
+public interface AnalyticsManager {
 
     void logEvent1();
 
