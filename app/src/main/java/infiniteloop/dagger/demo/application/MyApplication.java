@@ -17,14 +17,14 @@ public class MyApplication extends Application {
         super.onCreate();
         mContext = this;
 
-        injectMyself();
+        prepareAppLevelInjector();
     }
 
     //*********************************************************************
     // Utility methods
     //*********************************************************************
 
-    private void injectMyself() {
+    private void prepareAppLevelInjector() {
 
     }
 
