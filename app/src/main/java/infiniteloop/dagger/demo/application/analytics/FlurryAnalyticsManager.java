@@ -3,7 +3,7 @@ package infiniteloop.dagger.demo.application.analytics;
 import android.util.Log;
 
 
-public class FlurryAnalyticsManager implements AnalyticsProvider {
+public class FlurryAnalyticsManager implements AnalyticsManager {
 
     public static final String TAG = "FlurryAnalyticsManager";
 

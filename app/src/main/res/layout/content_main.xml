@@ -35,4 +35,13 @@
         android:layout_margin="8dp"
         android:text="Button3" />
 
+
+    <Button
+        android:id="@+id/open_second"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="8dp"
+        android:text="Open Second Activity" />
+
+
 </LinearLayout>
