@@ -9,7 +9,11 @@ import javax.inject.Inject;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import infiniteloop.dagger.demo.application.MyApplication;
 import infiniteloop.dagger.demo.application.R;
+import infiniteloop.dagger.demo.application.di.DaggerSecondComponent;
+import infiniteloop.dagger.demo.application.di.SecondComponent;
+import infiniteloop.dagger.demo.application.di.SecondModule;
 
 
 public class SecondActivity extends AppCompatActivity {
@@ -21,7 +25,7 @@ public class SecondActivity extends AppCompatActivity {
 
     @OnClick(R.id.id_hi)
     void sayHi() {
-        //mSecondActivityPresenter.sayHi(this);
+        mSecondActivityPresenter.sayHi(this);
     }
 
     @Inject
@@ -46,6 +50,10 @@ public class SecondActivity extends AppCompatActivity {
     //*********************************************************************
 
     private void injectMyself() {
+        SecondComponent component= DaggerSecondComponent.builder().mainComponent(MyApplication.getAppContext().getComponent())
+                .secondModule(new SecondModule())
+                .build();
+        component.inject(this);
     }
 
     //*********************************************************************

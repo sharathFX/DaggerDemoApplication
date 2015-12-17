@@ -6,18 +6,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.Toast;
 
+import javax.inject.Inject;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import infiniteloop.dagger.demo.application.MyApplication;
 import infiniteloop.dagger.demo.application.R;
 import infiniteloop.dagger.demo.application.analytics.AnalyticsManager;
 import infiniteloop.dagger.demo.application.analytics.GoogleAnalyticsManager;
+import infiniteloop.dagger.demo.application.di.DaggerMainComponent;
+import infiniteloop.dagger.demo.application.di.MainComponent;
+import infiniteloop.dagger.demo.application.di.MainModule;
 
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "MainActivity";
 
+    @Inject
     AnalyticsManager mAnalyticsProvider;
 
     @Bind(R.id.toolbar)
@@ -38,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
         setSupportActionBar(mToolbar);
-        mAnalyticsProvider = new GoogleAnalyticsManager();
+
         injectMyself();
     }
 
@@ -47,11 +54,7 @@ public class MainActivity extends AppCompatActivity {
     //*********************************************************************
 
     private void injectMyself() {
-        /*MainComponent component = DaggerMainComponent
-                .builder()
-                .mainModule(new MainModule())
-                .build();
-        component.inject(this);*/
+        MyApplication.getAppContext().getComponent().inject(this);
     }
 
     //*********************************************************************

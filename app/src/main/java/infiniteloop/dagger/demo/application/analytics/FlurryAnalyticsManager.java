@@ -2,11 +2,14 @@ package infiniteloop.dagger.demo.application.analytics;
 
 import android.util.Log;
 
+import javax.inject.Inject;
+
 
 public class FlurryAnalyticsManager implements AnalyticsManager {
 
     public static final String TAG = "FlurryAnalyticsManager";
 
+    @Inject
     public FlurryAnalyticsManager() {
     }
 
